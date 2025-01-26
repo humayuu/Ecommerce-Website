@@ -33,6 +33,11 @@ Route::middleware([
 Route::get('admin/logout',[AdminController::class, 'destroy'])->name('admin.logout');
 Route::get('admin/profile',[AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
 Route::get('admin/profile/edit',[AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
+Route::get('admin/change/password',[AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
+
+
+Route::post('admin/profile/store',[AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
+Route::post('update/change/password',[AdminProfileController::class, 'AdminUpdateChangePassword'])->name('admin.update.change.password');
 
 
 Route::middleware([

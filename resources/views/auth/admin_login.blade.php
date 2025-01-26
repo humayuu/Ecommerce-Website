@@ -43,7 +43,7 @@
                                         </div>
                                         <input id="email" type="email" name="email"
                                             class="form-control pl-15 bg-transparent text-white plc-white"
-                                            placeholder="Email">
+                                            placeholder="Email" autofocus>
                                     </div>
                                 </div>
                                 <div class="form-group">
