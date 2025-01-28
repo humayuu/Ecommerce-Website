@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Backend\AdminProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Backend\AdminProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,6 +41,8 @@ Route::post('admin/profile/store',[AdminProfileController::class, 'AdminProfileS
 Route::post('update/change/password',[AdminProfileController::class, 'AdminUpdateChangePassword'])->name('admin.update.change.password');
 
 
+
+// User All Routes
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -49,3 +52,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/',[IndexController::class, 'index']);
+
