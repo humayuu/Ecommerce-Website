@@ -12,7 +12,7 @@
                         <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
                         @auth
                         <li>
-                            <a href="{{ route('profile.show') }}">
+                            <a href="{{ route('user.profile') }}">
                                 <i class="icon fa fa-user"></i> {{ __('User Profile') }}
                             </a>
                         </li>

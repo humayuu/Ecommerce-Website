@@ -31,19 +31,21 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800'
         rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    {{-- Toaster cdn --}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body class="cnt-home">
     <!-- ============================================== HEADER ============================================== -->
-  @include('frontend.body.header')
+    @include('frontend.body.header')
 
     <!-- ============================================== HEADER : END ============================================== -->
- @yield('content')
+    @yield('content')
 
     <!-- /#top-banner-and-menu -->
 
     <!-- ============================================================= FOOTER ============================================================= -->
- @include('frontend.body.footer')
+    @include('frontend.body.footer')
     <!-- ============================================================= FOOTER : END============================================================= -->
 
     <!-- For demo purposes – can be removed on production -->
@@ -63,6 +65,30 @@
     <script src="{{ asset('frontend/assets/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" \></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    break;
+            }
+        @endif
+    </script>
 </body>
 
 </html>
