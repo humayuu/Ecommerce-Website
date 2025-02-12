@@ -30,7 +30,7 @@ class AdminProfileController extends Controller
 
         if($request->file('profile_photo_path')){
             $file = $request->file('profile_photo_path');
-            unlink(public_path('upload/admin_images/' . $adminData->profile_photo_path));
+            // unlink(public_path('upload/admin_images/' . $adminData->profile_photo_path));
             $fileName = date('YmdHi') . $file->getClientOriginalName();
             $file->move(public_path('upload/admin_images'), $fileName);
             $adminData['profile_photo_path'] = $fileName;
