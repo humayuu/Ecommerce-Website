@@ -85,49 +85,36 @@
     {{-- Sweet alert cdn --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
-        $(function() {
-            $(document).on('click', '#delete', function(e) {
-                e.preventDefault();
-                let link = $(this).attr('href'); // Get the delete URL
+       $(function(){
+    $(document).on('click','#delete',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
 
-                Swal.fire({
-                    title: "Are you sure?",
-                    text: "Delete this data",
-                    icon: "warning",
+
+                  Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Delete This Data?",
+                    icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Yes, delete it!"
-                }).then((result) => {
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                  }).then((result) => {
                     if (result.isConfirmed) {
-                        $.ajax({
-                            url: link, // URL to send the request to
-                            type: 'GET', // HTTP method
-                            data: {
-                                _token: '{{ csrf_token() }}' // Include CSRF token
-                            },
-                            success: function(response) {
-                                Swal.fire({
-                                    title: "Deleted!",
-                                    text: response.message, // Success message from server
-                                    icon: "success"
-                                }).then(() => {
-                                    // Optionally, reload the page or update the UI
-                                    location.reload();
-                                });
-                            },
-                            error: function(xhr) {
-                                Swal.fire({
-                                    title: "Error!",
-                                    text: xhr.responseJSON.message || "Something went wrong while deleting the data.",
-                                    icon: "error"
-                                });
-                            }
-                        });
+                      window.location.href = link
+                      Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      )
                     }
-                });
-            });
-        });
+                  })
+
+
+    });
+
+  });
+
     </script>
 </body>
 
